@@ -1,0 +1,60 @@
+﻿@model IEnumerable<Mango.UI.Web.Models.Dtos.ProductDto>
+
+@{
+    ViewData["Title"] = "Products";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Products</h1>
+</div>
+
+<br /><br />
+<div class="container p-4 border">
+    <div class="row pb-2">
+        <div class="col">
+            <div class="text-primary">
+                <h1>Product list</h1>
+            </div>
+        </div>
+        <div class="col text-end pt-1">
+            <div class="text-info">
+                <a class="btn btn-outline-primary" asp-controller="Products" asp-action="Create">
+                    <i class="fas fa-plus"></i>
+                     Create new product
+                </a>
+            </div>
+        </div>
+    </div>
+    <div>
+        <table class="table">
+            <thead style="text-align: right;">
+                <tr>
+                    <th>Name</th>
+                    <th>Category Name</th>
+                    <th>Price</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody style="text-align: right;">
+                @foreach (var product in Model)
+                {
+                    <tr>
+                        <td>@product.Name</td>
+                        <td>@product.CategoryName</td>
+                        <td>@((product.Price).ToString("c"))</td>
+                        <td>
+                            <a asp-controller="Products" asp-action="Edit" asp-route-id="@product.Id" class="btn btn-success">
+                                <i class="fas fa-edit"></i>
+                                Edit
+                            </a>
+                            <a asp-controller="Products" asp-action="Delete" asp-route-id="@product.Id" class="btn btn-danger">
+                                <i class="fas fa-trash"></i>
+                                Delete
+                            </a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
