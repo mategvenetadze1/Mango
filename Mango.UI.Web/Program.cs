@@ -4,8 +4,6 @@ using Mango.UI.Web.Services.Interfaces;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Logging.ClearProviders();
-
 // Add services to the container.
 var configuration = builder.Configuration;
 
